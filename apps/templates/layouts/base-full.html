@@ -1,0 +1,46 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>
+            {% block title %}{% endblock %} | sfitech
+          </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesbrand" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{% static 'assets/images/logo.png' %}">
+
+        <!-- plugin css -->
+        <link href="{% static 'assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/libs/sweetalert2/sweetalert2.min.css' %}" rel="stylesheet" type="text/css" />
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
+        <!-- preloader css -->
+        <link rel="stylesheet" href="{% static 'assets/css/preloader.min.css' %}" type="text/css" />
+        <link rel="stylesheet" href="{% static 'assets/css/otp.css' %}" type="text/css" />
+        <!-- Bootstrap Css -->
+        <link href="{% static 'assets/css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="{% static 'assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="{% static 'assets/css/app.min.css' %}" id="app-style" rel="stylesheet" type="text/css" />
+        {% block stylesheets %}{% endblock stylesheets %}
+    </head>
+
+    <body>
+
+        <div id="layout-wrapper">
+            {% block content %}{% endblock content %}
+            {% include "includes/scripts.html" %}
+        </div>
+        <div class="rightbar-overlay"></div>
+        {% block javascripts %}{% endblock javascripts %}
+        
+        <script src="{% static 'assets/js/sweetalerts.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+    </body>
+
+</html>
