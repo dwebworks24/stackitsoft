@@ -1,0 +1,340 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<!-- PageTitle -->
+<!-- <section class="page-title">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h3 class="heading">Login</h3>
+          </div>
+          <div class="col-md-6">
+            <ul class="breadcrumb">
+              <li><a href="index.html">Home</a></li>
+              <li><p class="fs-18">/</p></li>
+              <li><p class="fs-18">Login</p></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section> -->
+<!-- End PageTitle -->
+
+<section class="coin-list">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="block-text">
+          <h3 class="heading " style="text-align: center!important;">Market Update</h3>
+          <a class="btn-action" href="#">See All Coins</a>
+        </div>
+
+        <div class="coin-list__main">
+          <div class="flat-tabs">
+
+            <div class="content-tab">
+              <div class="content-inner">
+                <table class="table" id="market-table">
+                  <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">#</th>
+
+                      <th scope="col">Name</th>
+                      <th scope="col">2PM</th>
+                      <th scope="col">3PM</th>
+                      <th scope="col">4PM</th>
+                      <th scope="col">5PM</th>
+                      <th scope="col">6PM</th>
+                      <th scope="col">7PM</th>
+                      <th scope="col">8PM</th>
+                      <th scope="col">9PM</th>
+                      <th scope="col">10PM</th>
+                      <th scope="col">11PM</th>
+                    </tr>
+                  </thead>
+                  <tbody id="coin-table-body">
+                    <tr>
+                      <th scope="row"><span class="icon-star"></span></th>
+                      <td>1</td>
+                      <td>
+                        <a href="#"><span class="icon-btc"><span class="path1"></span><span class="path2"></span></span>
+                          <span>Bitcoin</span>
+                          <span class="unit">BTC</span></a>
+                      </td>
+                      <td class="boild">$56,000</td>
+                      <td class="boild">$56,100</td>
+                      <td class="boild">$56,250</td>
+                      <td class="boild">$56,400</td>
+                      <td class="boild">$56,300</td>
+                      <td class="boild">$56,200</td>
+                      <td class="boild">$56,150</td>
+                      <td class="boild">$56,050</td>
+                      <td class="boild">$55,900</td>
+                      <td class="boild">$55,850</td>
+
+                    </tr>
+                    <tr>
+                      <th scope="row"><span class="icon-star"></span></th>
+                      <td>2</td>
+                      <td>
+                        <a href="#"><span class="icon-eth"><span class="path1"></span><span class="path2"></span><span
+                              class="path3"></span><span class="path4"></span></span><span>Ethereum</span>
+                          <span class="unit">ETH</span></a>
+                      </td>
+                      <td>$3,400</td>
+                      <td class="boild">$3,420</td>
+                      <td class="boild">$3,450</td>
+                      <td class="boild">$3,460</td>
+                      <td class="boild">$3,430</td>
+                      <td class="boild">$3,410</td>
+                      <td class="boild">$3,390</td>
+                      <td class="boild">$3,370</td>
+                      <td class="boild">$3,350</td>
+                      <td class="boild">$3,340</td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><span class="icon-star"></span></th>
+                      <td>3</td>
+                      <td>
+                        <a href="#"><span class="icon-bnb"><span class="path1"></span><span class="path2"></span><span
+                              class="path3"></span><span class="path4"></span><span class="path5"></span><span
+                              class="path6"></span></span><span>BNB</span>
+                          <span class="unit">BNB/USD</span></a>
+                      </td>
+                      <td class="boild">$145</td>
+                      <td class="boild">$147</td>
+                      <td class="boild">$150</td>
+                      <td class="boild">$152</td>
+                      <td class="boild">$151</td>
+                      <td class="boild">$150</td>
+                      <td class="boild">$148</td>
+                      <td class="boild">$147</td>
+                      <td class="boild">$146</td>
+                      <td class="boild">$144</td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><span class="icon-star"></span></th>
+                      <td>4</td>
+                      <td>
+                        <a href="#"><span class="icon-tether"><span class="path1"></span><span
+                              class="path2"></span></span><span>Tether</span>
+                          <span class="unit">USDT/USD</span></a>
+                      </td>
+                      <td class="boild">$0.54</td>
+                      <td class="boild">$0.55</td>
+                      <td class="boild">$0.56</td>
+                      <td class="boild">$0.55</td>
+                      <td class="boild">$0.54</td>
+                      <td class="boild">$0.53</td>
+                      <td class="boild">$0.52</td>
+                      <td class="boild">$0.51</td>
+                      <td class="boild">$0.50</td>
+                      <td class="boild">$0.49</td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><span class="icon-star"></span></th>
+                      <td>5</td>
+                      <td>
+                        <a href="#"><span class="icon-sol"><span class="path1"></span><span class="path2"></span><span
+                              class="path3"></span><span class="path4"></span><span
+                              class="path5"></span></span><span>Solana</span>
+                          <span class="unit">SOL</span></a>
+                      </td>
+                      <td class="boild">$0.36</td>
+                      <td class="boild">$0.37</td>
+                      <td class="boild">$0.38</td>
+                      <td class="boild">$0.39</td>
+                      <td class="boild">$0.38</td>
+                      <td class="boild">$0.37</td>
+                      <td class="boild">$0.36</td>
+                      <td class="boild">$0.35</td>
+                      <td class="boild">$0.34</td>
+                      <td class="boild">$0.33</td>
+                    </tr>
+                    <tr>
+                      <th scope="row"><span class="icon-star"></span></th>
+                      <td>6</td>
+                      <td>
+                        <a href="#"><span class="icon-btc"><span class="path1"></span><span
+                              class="path2"></span></span><span>XRP</span> <span class="unit">XRP</span></a>
+                      </td>
+                      <td class="boild">$0.13</td>
+                      <td class="boild">$0.132</td>
+                      <td class="boild">$0.135</td>
+                      <td class="boild">$0.137</td>
+                      <td class="boild">$0.136</td>
+                      <td class="boild">$0.134</td>
+                      <td class="boild">$0.133</td>
+                      <td class="boild">$0.132</td>
+                      <td class="boild">$0.131</td>
+                      <td class="boild">$0.130</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+
+                <form id="coin-form" style="margin-top: 30px;">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <input type="text" class="form-control" placeholder="Coin Name (e.g. Polygon)" id="coin-name">
+                    </div>
+                    <div class="col-md-1">
+                      <input type="text" class="form-control" placeholder="Unit" id="coin-unit">
+                    </div>
+                    <div class="col-md-5">
+                      <input type="text" class="form-control" placeholder="Prices (comma-separated: $1,$2...)"
+                        id="coin-prices">
+                    </div>
+                    <div class="col-md-2">
+                      <select class="form-select" id="coin-action">
+                        <option value="draft">Draft</option>
+                        <option value="submit">Save & Submit</option>
+                      </select>
+                    </div>
+                    <div class="col-md-1">
+                      <button type="button" class="btn btn-success w-100" onclick="addCoin()">Go</button>
+                    </div>
+                  </div>
+                  <div class="mt-3">
+                    <button type="reset" class="btn btn-secondary">Clear</button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sale">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="block-text">
+          <h4 class="heading">Earn up to $25 worth of crypto</h4>
+          <p class="desc">
+            Discover how specific cryptocurrencies work — and get a bit of
+            each crypto to try out for yourself.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="button">
+          <a href="#">Create Account</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  function Convert() {
+    let dollarInput = document.getElementByClass("dollar").value;
+    let bitcoinInput = document.getElementByClass("bitcoin").value;
+
+    if ((dollarInput != "") & (bitcoinInput == "")) {
+      let parsedDollar = parseFloat(dollarInput);
+      let fromDollarToBitcoin = parsedDollar * 0.000022;
+
+      let output = document.getElementByClass("bitcoin");
+      output.value = fromDollarToBitcoin;
+      console.log("Bitcoin", fromDollarToBitcoin);
+
+      clearMessage();
+      clearAlert();
+    }
+
+    if ((bitcoinInput != "") & (dollarInput == "")) {
+      let parsedBitcoin = parseFloat(bitcoinInput);
+      let fromBitcoinToDollar = parsedBitcoin * 46403.5;
+
+      let output = document.getElementByClass("dollar");
+      output.value = fromBitcoinToDollar;
+      console.log("US$", fromBitcoinToDollar);
+
+      clearMessage();
+      clearAlert();
+    }
+
+    if ((bitcoinInput == "") & (dollarInput == "")) {
+      showMessage();
+    }
+  }
+</script>
+
+<script>
+  let rowCount = 7;
+
+  function loadSavedCoins() {
+    const savedCoins = JSON.parse(localStorage.getItem("savedCoins")) || [];
+    savedCoins.forEach((coin, index) => {
+      insertOrUpdateCoinRow(coin.name, coin.unit, coin.prices, false);
+    });
+  }
+
+  function insertOrUpdateCoinRow(name, unit, prices, saveToLocal = true) {
+    const tableBody = document.getElementById("coin-table-body");
+    const existingRow = Array.from(tableBody.rows).find(row => {
+      const coinNameCell = row.cells[2];
+      return coinNameCell && coinNameCell.textContent.includes(name);
+    });
+
+    if (existingRow) {
+      // Update existing row
+      existingRow.cells[2].innerHTML = `<a href="#"><span>${name}</span> <span class="unit">${unit}</span></a>`;
+      for (let i = 0; i < 10; i++) {
+        existingRow.cells[3 + i].textContent = prices[i].trim();
+      }
+    } else {
+      // Create new row
+      const newRow = document.createElement("tr");
+      let rowHTML = `<th scope="row"><span class="icon-star"></span></th>`;
+      rowHTML += `<td>${rowCount}</td>`;
+      rowHTML += `<td><a href="#"><span>${name}</span> <span class="unit">${unit}</span></a></td>`;
+      prices.forEach(price => {
+        rowHTML += `<td class="boild">${price.trim()}</td>`;
+      });
+      newRow.innerHTML = rowHTML;
+      tableBody.appendChild(newRow);
+      rowCount++;
+    }
+
+    if (saveToLocal) {
+      let savedCoins = JSON.parse(localStorage.getItem("savedCoins")) || [];
+      const existingIndex = savedCoins.findIndex(coin => coin.name === name);
+      if (existingIndex !== -1) {
+        savedCoins[existingIndex] = { name, unit, prices };
+      } else {
+        savedCoins.push({ name, unit, prices });
+      }
+      localStorage.setItem("savedCoins", JSON.stringify(savedCoins));
+    }
+  }
+
+  function addCoin() {
+    const name = document.getElementById("coin-name").value.trim();
+    const unit = document.getElementById("coin-unit").value.trim();
+    const prices = document.getElementById("coin-prices").value.trim().split(",");
+    const action = document.getElementById("coin-action").value;
+
+    if (!name || !unit || prices.length !== 10) {
+      alert("Please enter a name, unit, and 10 price values (2PM to 11PM).");
+      return;
+    }
+
+    insertOrUpdateCoinRow(name, unit, prices, action === "submit");
+
+    document.getElementById("coin-form").reset();
+  }
+
+  window.onload = loadSavedCoins;
+</script>
+
+{% endblock %}
