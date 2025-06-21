@@ -1,8 +1,7 @@
 import csv
 from django.contrib import admin
 from django.http import HttpResponse
-# Register your models here.
-from .models import *
+from apps.home.models import *
 # Register your models here.
 class AdminUserlist(admin.ModelAdmin):
     list_display=('id','username','email')
@@ -20,29 +19,5 @@ class AdminUserlist(admin.ModelAdmin):
         return response
     export_to_csv.short_description = "Download selected as csv"
 
-class AdminCluster_aera(admin.ModelAdmin):
-    list_display=('id','cluster_aera',)
-
-class AdminShopOwner(admin.ModelAdmin):
-    list_display=('id','shopowner_number')
-
-
-class AdminWasteType(admin.ModelAdmin):
-    list_display=('id','quantity','wastename','price')
-
-
-class AdminPickupTransaction(admin.ModelAdmin):
-    list_display=('id','pickup_date','shop_owner','lifted_status',)
-
-
-class AdminPickupWastData(admin.ModelAdmin):
-    list_display=('id','waste_type','quantity','get_shop_owner')
-    def get_shop_owner(self, obj):
-        return obj.pickup_transaction.shop_owner
 
 admin.site.register(Users,AdminUserlist)
-admin.site.register(ShopOwner,AdminShopOwner)
-admin.site.register(WasteType,AdminWasteType)
-admin.site.register(PickupTransaction,AdminPickupTransaction)
-admin.site.register(PickupWastData,AdminPickupWastData)
-admin.site.register(Clusteraera,AdminCluster_aera)
