@@ -46,3 +46,43 @@ function loginfunc() {
       }
     });
   }
+
+ document.getElementById("manual-close-btn").addEventListener("click", function () {
+    const modalElement = document.getElementById("editMarketModal");
+    const modalInstance = bootstrap.Modal.getInstance(modalElement);
+    
+    // Fallback: if modal is not already instantiated
+    const modal = modalInstance || new bootstrap.Modal(modalElement);
+    modal.hide();
+  });
+
+
+  function submitEditForm() {
+    const formData = {
+      id: document.getElementById('edit-id').value,
+      name: document.getElementById('edit-name').value,
+      unit: document.getElementById('edit-unit').value
+    };
+
+    // Get hourly prices
+    for (let hour = 2; hour <= 11; hour++) {
+      const field = document.getElementById(`edit-price_${hour}pm`);
+      formData[`price_${hour}pm`] = field ? field.value : '';
+    }
+
+    $.ajax({
+        url: '/update-market/', 
+        type: 'POST',
+        data: formData,
+          headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+        success: function (response) {
+          alert('Market updated successfully!');
+          $('#editMarketModal').modal('hide');
+          location.reload(); 
+        },
+        error: function (xhr, status, error) {
+          console.error('Error:', error);
+          alert('Something went wrong while updating.');
+        }
+      });
+  }

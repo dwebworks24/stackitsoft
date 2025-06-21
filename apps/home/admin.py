@@ -20,4 +20,11 @@ class AdminUserlist(admin.ModelAdmin):
     export_to_csv.short_description = "Download selected as csv"
 
 
+class AdminMarketCoin(admin.ModelAdmin):
+    list_display = ('id',)
+
+
+
+
 admin.site.register(Users,AdminUserlist)
+admin.site.register(MarketCoin,AdminMarketCoin)

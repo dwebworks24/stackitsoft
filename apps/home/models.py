@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, Group, Permission
 
+from core import settings
+
 class UserManager(BaseUserManager):
     use_in_migrations = True
 
@@ -77,3 +79,36 @@ class Users(AbstractBaseUser, PermissionsMixin):
 
     def has_module_perms(self, app_label):
         return True
+
+
+# models.py
+class MarketCoin(models.Model):
+    name = models.CharField(max_length=100)
+    unit = models.CharField(max_length=10)
+
+    price_2pm = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    price_3pm = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    price_4pm = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    price_5pm = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    price_6pm = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    price_7pm = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    price_8pm = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    price_9pm = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    price_10pm = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    price_11pm = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    
+    created_at =  models.DateTimeField(auto_now=True)
+    update_at =   models.DateTimeField(auto_now=True)
+
+    
+    updated_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='market_updates'
+    )
+    
+
+    def __str__(self):
+        return f"{self.name} ({self.unit}) {self.created_at}"

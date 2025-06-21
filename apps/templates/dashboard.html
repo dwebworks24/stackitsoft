@@ -8,7 +8,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <h3 class="heading">Login</h3>
+            <h3 class="heading">Market Dashboard</h3>
           </div>
           <div class="col-md-6">
             <ul class="breadcrumb">
@@ -27,89 +27,65 @@
     <div class="row">
       <div class="col-md-12 mt-5">
         <div class="block-text">
-          <h3 class="heading mt-5 pt-3" style="text-align: center!important;">Market Update</h3>
-          <!-- <a class="btn-action" href="#">See All Coins</a> -->
+          <h3 class="heading mt-5 pt-3 text-center">Market Update</h3>
         </div>
 
         <div class="coin-list__main">
           <div class="flat-tabs">
-
             <div class="content-tab">
               <div class="content-inner">
-                <table class="table" id="market-table">
+                <table class="table  table-hover" id="market-table">
                   <thead>
                     <tr>
-                      <th scope="col"></th>
-                      <th scope="col">#</th>
-
-                      <th scope="col">Name</th>
-                      <th scope="col">2PM</th>
-                      <th scope="col">3PM</th>
-                      <th scope="col">4PM</th>
-                      <th scope="col">5PM</th>
-                      <th scope="col">6PM</th>
-                      <th scope="col">7PM</th>
-                      <th scope="col">8PM</th>
-                      <th scope="col">9PM</th>
-                      <th scope="col">10PM</th>
-                      <th scope="col">11PM</th>
-                      <th scope="col">Actions</th>
+                      <th></th>
+                      <th>#</th>
+                      <th>Name</th>
+                      <th>2PM</th>
+                      <th>3PM</th>
+                      <th>4PM</th>
+                      <th>5PM</th>
+                      <th>6PM</th>
+                      <th>7PM</th>
+                      <th>8PM</th>
+                      <th>9PM</th>
+                      <th>10PM</th>
+                      <th>11PM</th>
+                      <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody id="coin-table-body">
+                    {% for item in markets %}
                     <tr>
-                      <th scope="row"><span class="icon-star"></span></th>
-                      <td>1</td>
+                      <th><span class="icon-star"></span></th>
+                      <td>{{ item.id }}</td>
                       <td>
-                        <a href="#"><span class="icon-btc"><span class="path1"></span><span class="path2"></span></span>
-                          <span>Bitcoin</span>
-                          <span class="unit">BTC</span></a>
+                        <a href="#">
+                          <span class="icon-btc"><span class="path1"></span><span class="path2"></span></span>
+                          <span>{{ item.name }}</span>
+                          <span class="unit">{{ item.unit }}</span>
+                        </a>
                       </td>
-                      <td class="boild">$56,000</td>
-                      <td class="boild">$56,100</td>
-                      <td class="boild">$56,250</td>
-                      <td class="boild">$56,400</td>
-                      <td class="boild">$56,300</td>
-                      <td class="boild">$56,200</td>
-                      <td class="boild">$56,150</td>
-                      <td class="boild">$56,050</td>
-                      <td class="boild">$55,900</td>
-                      <td class="boild">$55,850</td>
-                       <td class="boild"><button class="btn btn-sm btn-warning">edit</button></td>
-
+                      <td class="boild">${{ item.price_2pm|default:"--" }}</td>
+                      <td class="boild">${{ item.price_3pm|default:"--" }}</td>
+                      <td class="boild">${{ item.price_4pm|default:"--" }}</td>
+                      <td class="boild">${{ item.price_5pm|default:"--" }}</td>
+                      <td class="boild">${{ item.price_6pm|default:"--" }}</td>
+                      <td class="boild">${{ item.price_7pm|default:"--" }}</td>
+                      <td class="boild">${{ item.price_8pm|default:"--" }}</td>
+                      <td class="boild">${{ item.price_9pm|default:"--" }}</td>
+                      <td class="boild">${{ item.price_10pm|default:"--" }}</td>
+                      <td class="boild">${{ item.price_11pm|default:"--" }}</td>
+                      <td>
+                        <a href="javascript:void(0)" class="btn btn-sm btn-warning" onclick="populateEditModal(this)">Edit</a>
+                      </td>
                     </tr>
-                 
-
+                    {% empty %}
+                    <tr>
+                      <td colspan="14" class="text-center">No market coins found.</td>
+                    </tr>
+                    {% endfor %}
                   </tbody>
                 </table>
-
-                <!-- <form id="coin-form" style="margin-top: 30px;">
-                  <div class="row">
-                    <div class="col-md-3">
-                      <input type="text" class="form-control" placeholder="Coin Name (e.g. Polygon)" id="coin-name">
-                    </div>
-                    <div class="col-md-1">
-                      <input type="text" class="form-control" placeholder="Unit" id="coin-unit">
-                    </div>
-                    <div class="col-md-5">
-                      <input type="text" class="form-control" placeholder="Prices (comma-separated: $1,$2...)"
-                        id="coin-prices">
-                    </div>
-                    <div class="col-md-2">
-                      <select class="form-select" id="coin-action">
-                        <option value="draft">Draft</option>
-                        <option value="submit">Save & Submit</option>
-                      </select>
-                    </div>
-                    <div class="col-md-1">
-                      <button type="button" class="btn btn-success w-100" onclick="addCoin()">Go</button>
-                    </div>
-                  </div>
-                  <div class="mt-3">
-                    <button type="reset" class="btn btn-secondary">Clear</button>
-                  </div>
-                </form> -->
-
               </div>
             </div>
           </div>
@@ -119,129 +95,94 @@
   </div>
 </section>
 
-<section class="section-sale">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-7">
-        <div class="block-text">
-          <h4 class="heading">Earn up to $25 worth of crypto</h4>
-          <p class="desc">
-            Discover how specific cryptocurrencies work — and get a bit of
-            each crypto to try out for yourself.
-          </p>
+<!-- Edit Modal -->
+<div class="modal fade" id="editMarketModal" tabindex="-1" role="dialog" aria-labelledby="editMarketLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <form id="editMarketForm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Market</h5>
+          <button type="button" class="btn btn-warning  rounded close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body row g-3">
+          <input type="hidden" id="edit-id" name="id">
+
+          <div class="col-md-6">
+            <label for="edit-name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="edit-name" name="name">
+          </div>
+
+          <div class="col-md-6">
+            <label for="edit-unit" class="form-label">Unit</label>
+            <input type="text" class="form-control" id="edit-unit" name="unit">
+          </div>
+
+          {% for hour in hours_list %}
+          <div class="col-sm-12 col-md-3 col-lg-3">
+            <label for="edit-price_{{ hour }}pm" class="form-label">{{ hour }}PM Price</label>
+            <input type="text" class="form-control" id="edit-price_{{ hour }}pm" name="price_{{ hour }}pm">
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="submitEditForm()">Save Changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
-      <div class="col-md-5">
-        <div class="button">
-          <a href="#">Create Account</a>
-        </div>
-      </div>
-    </div>
+    </form>
   </div>
-</section>
+</div>
 
-
+<!-- Script to populate modal -->
 <script>
-  function Convert() {
-    let dollarInput = document.getElementByClass("dollar").value;
-    let bitcoinInput = document.getElementByClass("bitcoin").value;
+  function populateEditModal(button) {
+    const row = button.closest('tr');
+    const cells = row.querySelectorAll('td');
 
-    if ((dollarInput != "") & (bitcoinInput == "")) {
-      let parsedDollar = parseFloat(dollarInput);
-      let fromDollarToBitcoin = parsedDollar * 0.000022;
+    // ID is in the first <td>
+    const id = cells[0].innerText.trim();
 
-      let output = document.getElementByClass("bitcoin");
-      output.value = fromDollarToBitcoin;
-      console.log("Bitcoin", fromDollarToBitcoin);
+    // Name and unit are inside <td> index 1 (your 2nd <td>)
+    const link = cells[1].querySelector('a');
 
-      clearMessage();
-      clearAlert();
-    }
+    // Get all direct child spans (not nested ones inside icon)
+    const spans = Array.from(link.children).filter(el => el.tagName === 'SPAN');
 
-    if ((bitcoinInput != "") & (dollarInput == "")) {
-      let parsedBitcoin = parseFloat(bitcoinInput);
-      let fromBitcoinToDollar = parsedBitcoin * 46403.5;
+    // Name is the second span (after the icon)
+    const name = spans[1]?.textContent.trim() || '';
 
-      let output = document.getElementByClass("dollar");
-      output.value = fromBitcoinToDollar;
-      console.log("US$", fromBitcoinToDollar);
+    // Unit has its own class
+    const unit = link.querySelector('.unit')?.textContent.trim() || '';
 
-      clearMessage();
-      clearAlert();
-    }
+    // Prices: from 2PM to 11PM (cells[2] to cells[11])
+    const prices = Array.from(cells).slice(2, 12).map(cell =>
+      cell.innerText.replace('$', '').trim()
+    );
 
-    if ((bitcoinInput == "") & (dollarInput == "")) {
-      showMessage();
-    }
+    // Set hidden and text inputs
+    document.getElementById('edit-id').value = id;
+    document.getElementById('edit-name').value = name;
+    document.getElementById('edit-unit').value = unit;
+
+    const hourList = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+    hourList.forEach((hour, i) => {
+      const input = document.getElementById(`edit-price_${hour}pm`);
+      if (input) {
+        input.value = prices[i] === '--' ? '' : prices[i];
+      }
+    });
+
+    // Show the modal
+    $('#editMarketModal').modal('show');
   }
 </script>
 
-<script>
-  let rowCount = 7;
 
-  function loadSavedCoins() {
-    const savedCoins = JSON.parse(localStorage.getItem("savedCoins")) || [];
-    savedCoins.forEach((coin, index) => {
-      insertOrUpdateCoinRow(coin.name, coin.unit, coin.prices, false);
-    });
-  }
 
-  function insertOrUpdateCoinRow(name, unit, prices, saveToLocal = true) {
-    const tableBody = document.getElementById("coin-table-body");
-    const existingRow = Array.from(tableBody.rows).find(row => {
-      const coinNameCell = row.cells[2];
-      return coinNameCell && coinNameCell.textContent.includes(name);
-    });
 
-    if (existingRow) {
-      // Update existing row
-      existingRow.cells[2].innerHTML = `<a href="#"><span>${name}</span> <span class="unit">${unit}</span></a>`;
-      for (let i = 0; i < 10; i++) {
-        existingRow.cells[3 + i].textContent = prices[i].trim();
-      }
-    } else {
-      // Create new row
-      const newRow = document.createElement("tr");
-      let rowHTML = `<th scope="row"><span class="icon-star"></span></th>`;
-      rowHTML += `<td>${rowCount}</td>`;
-      rowHTML += `<td><a href="#"><span>${name}</span> <span class="unit">${unit}</span></a></td>`;
-      prices.forEach(price => {
-        rowHTML += `<td class="boild">${price.trim()}</td>`;
-      });
-      newRow.innerHTML = rowHTML;
-      tableBody.appendChild(newRow);
-      rowCount++;
-    }
-
-    if (saveToLocal) {
-      let savedCoins = JSON.parse(localStorage.getItem("savedCoins")) || [];
-      const existingIndex = savedCoins.findIndex(coin => coin.name === name);
-      if (existingIndex !== -1) {
-        savedCoins[existingIndex] = { name, unit, prices };
-      } else {
-        savedCoins.push({ name, unit, prices });
-      }
-      localStorage.setItem("savedCoins", JSON.stringify(savedCoins));
-    }
-  }
-
-  function addCoin() {
-    const name = document.getElementById("coin-name").value.trim();
-    const unit = document.getElementById("coin-unit").value.trim();
-    const prices = document.getElementById("coin-prices").value.trim().split(",");
-    const action = document.getElementById("coin-action").value;
-
-    if (!name || !unit || prices.length !== 10) {
-      alert("Please enter a name, unit, and 10 price values (2PM to 11PM).");
-      return;
-    }
-
-    insertOrUpdateCoinRow(name, unit, prices, action === "submit");
-
-    document.getElementById("coin-form").reset();
-  }
-
-  window.onload = loadSavedCoins;
-</script>
 
 {% endblock %}
