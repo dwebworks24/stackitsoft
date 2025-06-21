@@ -59,6 +59,15 @@
 .icon-notification:before {
   content: "\e902";
 }
+
+.icon-user:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\e901"; /* Font Awesome user icon */
+  font-weight: 900;
+}
+
+
+
 .icon-quote:before {
   content: "\e904";
   color: #3772ff;
@@ -270,4 +279,21 @@
 }
 .coin-list{
   background: #fef8fb;
+}
+
+
+.logo img{
+  width: 258px !important;
+  height: 52px !important;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+ .logo img{
+  width: 158px !important;
+  height: 42px !important;
+  
+}
+.profile-box{
+  margin-left: -20px !important;
+}
 }

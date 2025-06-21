@@ -27,7 +27,10 @@
     <!-- End Style CSS -->
 
     <link rel="shortcut icon" href="{% static 'assets/images/icon/favicon.png' %}" />
+    <link rel="shortcut icon" href="{% static 'assets/style.css' %}" />
+
     <link rel="apple-touch-icon-precomposed" href="{% static 'assets/images/icon/favicon.png' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWVBNLHCMS"></script>
 
     <script>
@@ -46,82 +49,88 @@
             <div class="row">
                 <div class="col-12">
                     <div class="header__body d-flex justify-content-between">
-                        <div class="header__left  w-100 d-flex justify-content-between">
+                        <div class="header__left">
                             <div class="logo">
-                                <a class="light" href="/">
-                                    <img id="site-logo" src="{% static 'assets/images/logo/logo-final.png' %}" alt="" width="258"
-                                        height="52" data-retina="assets/images/logo/logo@2x.png" data-width="118"
-                                        data-height="32" />
+                                <a class="light" href="/" style="cursor: text;">
+                                    <img src="{% static 'assets/images/logo/logo-final.png' %}" alt=""  data-retina="{% static 'assets/images/logo/logo@2x.png' %}"
+                                        data-width="118" data-height="32">
                                 </a>
-                                <a class="dark" href="/">
-                                    <img src="{% static 'assets/images/logo/logo-dark.png' %}" alt="" width="118" height="32"
-                                        data-retina="{% static 'assets/images/logo/logo-dark@2x.png' %}" data-width="118"
-                                        data-height="32" />
+                                <a class="dark" href="/" style="cursor: text;">
+                                    <img src="{% static 'assets/images/logo/logo-final.png' %}" alt="" width="118"
+                                        height="32" data-retina="{% static 'assets/images/logo/logo-dark@2x.png' %}"
+                                        data-width="118" data-height="32">
                                 </a>
                             </div>
                             <div class="left__main">
-                                <nav id="main-nav" class="main-nav">
-                                    <ul id="menu-primary-menu" class="menu">
-                                        <li class="menu-item-has-children current-menu-item">
-                                            <a href="#">Home</a>
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="/about-us/">About US</a>
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="#">Buy Crypto</a>
-                                
-                                            <ul class="sub-menu">
-                                                <li class="menu-item">
-                                                    <a href="/buy-crypto-select/">Buy Crypto Select</a>
-                                                </li>
-                                                <li class="menu-item">
-                                                    <a href="/buy-crypto-confirm/">Buy Crypto Confirm</a>
-                                                </li>
-                                                <li class="menu-item">
-                                                    <a href="/buy-crypto-details/">Buy Crypto Details</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="/markets/">Markets </a>
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="#">Accounts</a>
-                                
-                                            <ul class="sub-menu">
-                                                <li class="menu-item">
-                                                    <a href="/login/">Login</a>
-                                                </li>
-                                                <!-- <li class="menu-item">
-                                                                                                                        <a href="dashboard.html"
-                                                                                                                        >Dashboard</a
-                                                                                                                        >
-                                                                                                                    </li> -->
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="/contact-us/">Contact us
-                                                <svg class="s1" width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M6.75979 3.20154C6.69318 3.13681 6.59973 3.10739 6.50828 3.12243C6.41666 3.13741 6.33754 3.19493 6.29504 3.27747C6.14887 3.56144 5.9632 3.82239 5.74477 4.05308C5.76654 3.88644 5.7775 3.7188 5.7775 3.55072C5.7775 3.2282 5.73428 2.8963 5.64898 2.56413C5.36855 1.4731 4.6332 0.550422 3.63154 0.0327073C3.54434 -0.0123512 3.44043 -0.0107692 3.35463 0.0369261C3.26883 0.0846409 3.21264 0.172121 3.20494 0.269973C3.12686 1.26146 2.61615 2.16349 1.80301 2.74536C1.79225 2.75312 1.78156 2.76097 1.77088 2.76878C1.74875 2.78497 1.72789 2.80029 1.7084 2.81314C1.70535 2.81517 1.70232 2.81724 1.69936 2.81937C1.18795 3.18552 0.765977 3.67361 0.479004 4.23101C0.187402 4.79798 0.0395508 5.4064 0.0395508 6.03931C0.0395508 6.36173 0.0827734 6.69362 0.168027 7.02585C0.61793 8.77697 2.19379 9.99997 4.00023 9.99997C6.18404 9.99997 7.96068 8.22322 7.96068 6.03931C7.96068 4.96236 7.5342 3.95454 6.75979 3.20154Z"
-                                                        fill="#3772FF" />
-                                                </svg>
-                                            </a>
-                                        </li>
-                                
-                                    </ul>
-                                </nav>
+
                                 <!-- /#main-nav -->
                             </div>
+                        </div>
+
+                        <div class="header__right">
+
+                            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton4"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <!-- <span class="icon-user"></span> -->
+                                <i class="fa-solid fa-user"></i>
+                            </button>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
+                            
+                                                                                                                                                                                            
+                                <!-- <div class="dropdown-divider"></div> -->
+                                <a class="dropdown-item text-danger profile-box" href="/login/" style="cursor: text;"><i
+                                        class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>
+                                    <span>Login</span></a>
+                                <!-- <a class="dropdown-item text-danger" href="/" style="cursor: text;"><i
+                                                                                                class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>
+                                                                                            <span>Logout</span></a> -->
+                            </div>
+                            <div class="mobile-button"><span></span></div>
+
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <nav id="main-nav-mobi" class="main-nav w-100" style="display: none;">
+            <ul id="menu-primary-menu" class="menu">
+                <li class="menu-item-has-children current-menu-item">
+                    <a href="/">Home</a>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="/about-us/">About US</a>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="#">Buy Crypto</a>
+
+                    <ul class="sub-menu">
+                        <li class="menu-item">
+                            <a href="/buy-crypto-select/">Buy Crypto Select</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/buy-crypto-confirm/">Buy Crypto Confirm</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/buy-crypto-details/">Buy Crypto Details</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="/market/">Market</a>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="/contact-us/">Contact US</a>
+                </li>
+
+            </ul>
+        </nav>
+
     </header>
     <!-- end Header -->
-   {% block content %}
+    {% block content %}
     <!-- Default content can go here -->
     {% endblock %}
 
@@ -133,7 +142,8 @@
                     <div class="col-xl-4 col-md-6">
                         <div class="info">
                             <a href="/" class="logo">
-                                <img src="{% static 'assets/images/logo/logo-final.png' %}" class="footer-logo" alt="" />
+                                <img src="{% static 'assets/images/logo/logo-final.png' %}" class="footer-logo"
+                                    alt="" />
                             </a>
                             <!-- <h6>Let's talk! 🤙</h6> -->
                             <ul class="list">
@@ -269,7 +279,7 @@
     </script>
     <script>
         window.onload = function () {
-            document.body.style.zoom = "90%"; 
+            document.body.style.zoom = "90%";
         };
     </script>
 
