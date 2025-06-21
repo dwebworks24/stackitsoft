@@ -1,12 +1,14 @@
 from django import template
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse, JsonResponse
 from django.template import loader
-from django.urls import reverse
 from .models import * 
 from django.core.serializers import serialize
-# Create your views here.
 
+# Create your views here.
 
 def index(request):
     context ={'segment': 'index'}
@@ -82,17 +84,33 @@ def buy_crypto_details(request):
 
 
 
+@csrf_exempt
 def user_login(request):
-    context ={'segment': 'Login'}
-    try:
-        html_template = loader.get_template('login.html')
-        return HttpResponse(html_template.render(context, request))
-    except template.TemplateDoesNotExist:
-        html_template = loader.get_template('errorpages/page-404.html')
-        return HttpResponse(html_template.render(request))
-    except:
-        html_template = loader.get_template('errorpages/page-500.html')
-        return HttpResponse(html_template.render(request))          
+    if request.method == 'GET':
+        return render(request, 'login.html')
+    
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        employee_id = request.POST.get('employee_id')
+        password = request.POST.get('password')
+
+        # Validate fields
+        if not email or not employee_id or not password:
+            return JsonResponse({'status': 'error', 'message': 'All fields are required.'})
+
+        try:
+            user = Users.objects.get(email=email, employee_id=employee_id)
+        except Users.DoesNotExist:
+            return JsonResponse({'status': 'error', 'message': 'Invalid Employee ID or Email.'})
+
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            login(request, user)
+            return JsonResponse({'status': 'success', 'message': 'Login successful.', 'redirect_url': '/dashboard/'})
+        else:
+            return JsonResponse({'status': 'error', 'message': 'Invalid password.'})
+
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method.'})          
 
 
 def forgot_password(request):
