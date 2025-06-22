@@ -10,6 +10,8 @@ from django.core.serializers import serialize
 from django.core.paginator import Paginator
 from django.core.mail import send_mass_mail
 import datetime
+from django.contrib.auth import get_user_model
+from .utils.email_utils import send_market_update_email
 # Create your views here.
 
 def index(request):
@@ -148,25 +150,40 @@ def dashboard(request):
     })
 
 
-@csrf_exempt  # Or use CSRF token as shown in JS
+
+
+@csrf_exempt
+@login_required
 def update_market(request):
-    if request.method == 'POST':
-        market_id = request.POST.get('id')
-        name = request.POST.get('name')
-        unit = request.POST.get('unit')
+    if request.method != 'POST':
+        return JsonResponse({'status': 'invalid request'}, status=400)
 
-        # Optional: handle hourly prices
-        prices = {f'price_{h}pm': request.POST.get(f'price_{h}pm') for h in range(2, 12)}
+    market_id = request.POST.get('id')
+    name = request.POST.get('name')
+    unit = request.POST.get('unit')
+    prices = {f'price_{h}pm': request.POST.get(f'price_{h}pm') for h in range(2, 12)}
 
-        try:
-            market = MarketCoin.objects.get(pk=market_id)
-            market.name = name
-            market.unit = unit
-            for key, value in prices.items():
-                setattr(market, key, value or None)
-            market.save()
-            return JsonResponse({'status': 'success'})
-        except MarketCoin.DoesNotExist:
-            return JsonResponse({'status': 'not found'}, status=404)
+    try:
+        market = MarketCoin.objects.get(pk=market_id)
+    except MarketCoin.DoesNotExist:
+        return JsonResponse({'status': 'not found'}, status=404)
 
-    return JsonResponse({'status': 'invalid request'}, status=400)
+    # Update market details
+    market.name = name
+    market.unit = unit
+    for key, value in prices.items():
+        setattr(market, key, value or None)
+    market.save()
+
+    # Get recipient list
+    User = get_user_model()
+    recipient_list = list(User.objects.filter(email__isnull=False, email__gt='').values_list('email', flat=True))
+    updated_by=request.user
+    # Send email
+    email_success, email_message = send_market_update_email(market, prices, recipient_list,updated_by)
+
+    return JsonResponse({
+        'status': 'success',
+        'email_status': 'sent' if email_success else 'failed',
+        'email_message': email_message,
+    })

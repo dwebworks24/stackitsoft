@@ -150,4 +150,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 JAZZMIN_SETTING = JAZZMIN_SETTINGS
 
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST        = "smtp.gmail.com"
+EMAIL_PORT        = 587 
+EMAIL_HOST_USER   = "gsa32476@gmail.com"
+EMAIL_HOST_PASSWORD = "fwfb jzgx wbfe khqd"
+EMAIL_USE_TLS     = True
+DEFAULT_FROM_EMAIL = "gsa32476@gmail.com"
+
 FAST2SMS_API_KEY='LOZC9VFJiSaMe2DGE4uzkXngTqv07d1xwjh5BW3Uo86RysAtQNIw4OVfF57D6rySmh12sRLqYWdcl0ni'
+
