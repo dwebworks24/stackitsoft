@@ -13,6 +13,7 @@ urlpatterns = [
 
 
     path('login/', user_login, name='login'),
+    path('logout/', logout_view, name='logout'),
     path('forgot-password/', forgot_password, name='forgot-password'),
     path('update-market/', update_market, name='update_market'),
     path('dashboard/', dashboard, name='dashboard'),

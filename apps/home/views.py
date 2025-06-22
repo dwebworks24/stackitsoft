@@ -1,7 +1,7 @@
 from django import template
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
-from django.shortcuts import render
+from django.contrib.auth import authenticate, login,logout
+from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, JsonResponse
 from django.template import loader
@@ -116,6 +116,9 @@ def user_login(request):
 
     return JsonResponse({'status': 'error', 'message': 'Invalid request method.'})          
 
+def logout_view(request):
+    logout(request)
+    return redirect('login')
 
 def forgot_password(request):
     context ={'segment': 'forgot_password'}

@@ -79,12 +79,20 @@
                             
                                                                                                                                                                                             
                                 <!-- <div class="dropdown-divider"></div> -->
-                                <a class="dropdown-item text-danger profile-box" href="/login/" style="cursor: text;"><i
-                                        class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>
-                                    <span>Login</span></a>
-                                <!-- <a class="dropdown-item text-danger" href="/" style="cursor: text;"><i
-                                                                                                class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>
-                                                                                            <span>Logout</span></a> -->
+                                {% if user.is_authenticated %}
+                                <!-- Logout Button -->
+                                <a class="dropdown-item text-danger" href="{% url 'logout' %}">
+                                    <i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>
+                                    <span>Logout</span>
+                                </a>
+                                {% else %}
+                                <!-- Login Button -->
+                                <a class="dropdown-item text-danger" href="{% url 'login' %}">
+                                    <i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>
+                                    <span>Login</span>
+                                </a>
+                                {% endif %}
+
                             </div>
                             <div class="mobile-button"><span></span></div>
 
