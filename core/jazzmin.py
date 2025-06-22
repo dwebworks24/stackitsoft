@@ -1,15 +1,15 @@
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
-    "site_title": "Recycle Bandi Admin",
+    "site_title": "Stackit Soft Admin",
 
     # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_header": "Recycle Bandi ",
+    "site_header": "Stackit Soft ",
 
     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_brand": "Recycle Bandi ",
+    "site_brand": "Stackit Soft ",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": "assets/images/logo.png",
+    "site_logo": "assets/images/logo/logo-final.png",
 
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
     "login_logo": None,
@@ -24,10 +24,10 @@ JAZZMIN_SETTINGS = {
     "site_icon": None,
 
     # Welcome text on the login screen
-    "welcome_sign": "Welcome to the Recycle Bandi ",
+    "welcome_sign": "Welcome to the Stackit Soft ",
 
     # Copyright on the footer
-    "copyright": "Recycle Bandi ",
+    "copyright": "Stackit Soft ",
 
     # List of model admins to search from the search bar, search bar omitted if excluded
     # If you want to use a single search field you dont need to use a list, you can use a simple string 
@@ -117,7 +117,7 @@ JAZZMIN_SETTINGS = {
     # UI Tweaks #
     #############
     # Relative paths to custom CSS/JS scripts (must be present in static files)
-    "custom_css":"admin.css",
+    "custom_css":"/assets/admin.css",
     "custom_js": None,
     # Whether to link font from fonts.googleapis.com (use custom_css to supply font otherwise)
     "use_google_fonts_cdn": True,

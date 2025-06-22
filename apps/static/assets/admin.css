@@ -1,0 +1,14 @@
+/* admin.css */
+.change-form h1 {
+    color: red !important;
+}
+
+picture img{
+    height: 40px !important;
+}
+
+#jazzy-sidebar a img{
+    display: none !important;
+    /* width: 30%; */
+    /* padding: 20px; */
+}
