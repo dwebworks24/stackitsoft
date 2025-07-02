@@ -339,7 +339,17 @@
 
 
 
-
   picture img{
     height: 20px !important;
   }
+
+  .log-btn{
+    font-weight: 800;
+    font-size: 20px !important;
+    background-color: #DB2F69;
+  }
+
+    .log-btn:hover{
+      background-color: #e64278;
+      color: white !important;
+    }

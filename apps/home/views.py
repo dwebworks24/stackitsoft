@@ -132,7 +132,7 @@ def forgot_password(request):
         html_template = loader.get_template('errorpages/page-500.html')
         return HttpResponse(html_template.render(request))  
     
-
+@login_required
 def dashboard(request):
     # sort = request.GET.get('sort')
     # if sort in ['updated_at']:
