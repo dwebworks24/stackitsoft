@@ -24,9 +24,9 @@ STATIC_DIRS = os.path.join(BASE_DIR,'apps/static')
 SECRET_KEY = 'django-insecure-yenjl2vdmd(ub8@$qna3a2&pp@7($g*bpx1*=@k_d$olm0)4of'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['13.235.49.198']
 
 
 # Application definition
@@ -81,13 +81,23 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'stackkitsoftDB',
+        'USER': 'postgres',
+        'PASSWORD': 'Stackitsoft2025',
+        'HOST': 'database-1.cp8mwacko4uk.ap-south-1.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
