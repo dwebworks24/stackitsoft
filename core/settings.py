@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os 
 from pathlib import Path
 from .jazzmin import JAZZMIN_SETTINGS
+from decouple import config
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 # CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -91,10 +93,10 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'stackkitsoftDB',
-        'USER': 'postgres',
-        'PASSWORD': 'Stackitsoft2025',
-        'HOST': 'database-1.cp8mwacko4uk.ap-south-1.rds.amazonaws.com',
+        'NAME': config('DB_NAME'),   
+        'USER': config('DB_USERDB'),  
+        'PASSWORD': config('DB_PASSWORD'),    
+        'HOST': config('DB_HOST'),       
         'PORT': '5432',
     }
 }
@@ -163,10 +165,10 @@ JAZZMIN_SETTING = JAZZMIN_SETTINGS
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST        = "smtp.gmail.com"
 EMAIL_PORT        = 587 
-EMAIL_HOST_USER   = "gsa32476@gmail.com"
-EMAIL_HOST_PASSWORD = "fwfb jzgx wbfe khqd"
+EMAIL_HOST_USER   = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS     = True
-DEFAULT_FROM_EMAIL = "gsa32476@gmail.com"
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAI')
 
 FAST2SMS_API_KEY='LOZC9VFJiSaMe2DGE4uzkXngTqv07d1xwjh5BW3Uo86RysAtQNIw4OVfF57D6rySmh12sRLqYWdcl0ni'
 
