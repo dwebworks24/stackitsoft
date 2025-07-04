@@ -17,8 +17,8 @@ from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 # CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATES_DIRS = os.path.join(BASE_DIR,'apps/templates')
-STATIC_DIRS = os.path.join(BASE_DIR,'apps/static')
+TEMPLATES_DIRS = os.path.join(BASE_DIR,'templates')
+STATIC_DIRS = os.path.join(BASE_DIR,'static')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -26,10 +26,10 @@ STATIC_DIRS = os.path.join(BASE_DIR,'apps/static')
 SECRET_KEY = 'django-insecure-yenjl2vdmd(ub8@$qna3a2&pp@7($g*bpx1*=@k_d$olm0)4of'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['13.235.49.198']
-
+ALLOWED_HOSTS = ['*']
+# 13.235.49.198
 
 # Application definition
 
