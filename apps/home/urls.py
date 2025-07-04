@@ -10,6 +10,7 @@ urlpatterns = [
     path('buy-crypto-details/', buy_crypto_details, name='buy-crypto-details'),
     path('markets/', buy_crypto_details, name='markets'),
     path('contact-us/', contact_us, name='contact-us'),
+    path('404/', custom_404_test),
 
 
     path('login/', user_login, name='login'),

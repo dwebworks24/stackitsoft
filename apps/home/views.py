@@ -86,6 +86,10 @@ def buy_crypto_details(request):
         html_template = loader.get_template('errorpages/page-500.html')
         return HttpResponse(html_template.render(request))    
 
+def custom_404_test(request):
+    return render(request, '404.html', status=404)
+
+
 
 
 @csrf_exempt
@@ -190,3 +194,4 @@ def update_market(request):
         'email_status': 'sent' if email_success else 'failed',
         'email_message': email_message,
     })
+
