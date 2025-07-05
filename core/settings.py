@@ -28,9 +28,9 @@ SECRET_KEY = 'django-insecure-yenjl2vdmd(ub8@$qna3a2&pp@7($g*bpx1*=@k_d$olm0)4of
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['13.235.49.198']
+ALLOWED_HOSTS = ['13.235.49.198','stackitsoft.com' ,'www.stackitsoft.com']
 # 13.235.49.198
-
+# '13.235.49.198', 'stackitsoft.com' ,'www.stackitsoft.com'
 # Application definition
 
 INSTALLED_APPS = [
